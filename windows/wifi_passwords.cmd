@@ -1,1 +1,1 @@
-netsh wlan show profiles * key="clear"
+netsh wlan show profiles * key="clear">example.txt
